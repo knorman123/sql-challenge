@@ -1,0 +1,17 @@
+Departments
+-
+DepartmentID PK int
+dept_no
+dept_name
+
+
+DepartmentEmployees as de
+-
+EmployeeID PK int
+DepartmentID int FK >- Departments.DepartmentID
+emp_no
+
+DepartmentManagers as dm
+----
+EmployeeID PK FK  - de.EmployeeID 
+DepartmentID PK FK >- Departments.DepartmentID 
