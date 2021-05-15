@@ -7,11 +7,33 @@ dept_name
 
 DepartmentEmployees as de
 -
-EmployeeID PK int
-DepartmentID int FK >- Departments.DepartmentID
-emp_no
+EmployeeID PK FK >- Employees.EmployeeID
+DepartmentID PK FK >- Departments.DepartmentID
+
 
 DepartmentManagers as dm
 ----
-EmployeeID PK FK  - de.EmployeeID 
+EmployeeID PK FK  - Employees.EmployeeID 
 DepartmentID PK FK >- Departments.DepartmentID 
+
+Employees
+-
+EmployeeID PK
+emp_no
+TitleID FK >- Titles.TitleID
+birth_date
+first_name
+last_name
+sex
+hire_date
+
+Salaries
+-
+EmployeeID PK FK - Employees.EmployeeID
+salary 
+
+Titles
+-
+TitleID PK
+title_id
+title
