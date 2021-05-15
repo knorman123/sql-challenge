@@ -1,39 +1,39 @@
 Departments
 -
-DepartmentID PK int
-dept_no
-dept_name
+DepartmentID INT PK
+dept_no VARCHAR
+dept_name VARCHAR
 
 
 DepartmentEmployees as de
 -
-EmployeeID PK FK >- Employees.EmployeeID
-DepartmentID PK FK >- Departments.DepartmentID
+EmployeeID INT PK FK >- Employees.EmployeeID
+DepartmentID INT PK FK >- Departments.DepartmentID
 
 
 DepartmentManagers as dm
 ----
-EmployeeID PK FK  - Employees.EmployeeID 
-DepartmentID PK FK >- Departments.DepartmentID 
+EmployeeID INT PK FK  - Employees.EmployeeID 
+DepartmentID INT PK FK >- Departments.DepartmentID 
 
 Employees
 -
-EmployeeID PK
-emp_no
-TitleID FK >- Titles.TitleID
-birth_date
-first_name
-last_name
-sex
-hire_date
+EmployeeID INT PK
+emp_no INT
+TitleID  INT FK >- Titles.TitleID
+birth_date DATE
+first_name VARCHAR
+last_name VARCHAR
+sex VARCHAR
+hire_date DATE
 
 Salaries
 -
-EmployeeID PK FK - Employees.EmployeeID
-salary 
+EmployeeID INT PK FK - Employees.EmployeeID
+salary INT
 
 Titles
 -
-TitleID PK
-title_id
-title
+TitleID INT PK
+title_id VARCHAR
+title VARCHAR
