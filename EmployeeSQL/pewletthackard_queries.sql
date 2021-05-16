@@ -92,3 +92,63 @@ WHERE emp.hire_date >= '1986-01-01' and emp.hire_date <= '1986-12-31'
 
 -- List the manager of each department with the following information: 
 -- department number, department name, the manager's employee number, last name, first name.
+SELECT dm.dept_no,
+	dept.dept_name,
+	emp.emp_no,
+	emp.last_name,
+	emp.first_name
+FROM departments AS dept
+INNER JOIN department_managers AS dm
+	ON dept.dept_no = dm.dept_no
+INNER JOIN employees AS emp
+	ON emp.emp_no = dm.emp_no;
+
+-- List the department of each employee with the following information: 
+-- employee number, last name, first name, and department name.
+SELECT emp.emp_no,
+	emp.last_name,
+	emp.first_name,
+	dept.dept_name
+FROM departments AS dept
+INNER JOIN department_employees AS de
+	ON dept.dept_no = de.dept_no
+INNER JOIN employees AS emp
+	ON de.emp_no = emp.emp_no;
+
+-- List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
+SELECT first_name,
+	last_name,
+	sex
+FROM employees
+WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+
+-- List all employees in the Sales department, including their employee number, last name, first name, and department name.
+SELECT emp.emp_no,
+	emp.first_name,
+	emp.last_name,
+	dept.dept_name
+FROM departments AS dept
+INNER JOIN department_employees AS de
+	ON dept.dept_no = de.dept_no
+INNER JOIN employees AS emp
+	ON de.emp_no = emp.emp_no
+WHERE dept.dept_no = 'd007';
+
+-- List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
+SELECT emp.emp_no,
+	emp.first_name,
+	emp.last_name,
+	dept.dept_name
+FROM departments AS dept
+INNER JOIN department_employees AS de
+	ON dept.dept_no = de.dept_no
+INNER JOIN employees AS emp
+	ON de.emp_no = emp.emp_no
+WHERE dept.dept_no = 'd007' OR dept.dept_no = 'd005';
+
+-- In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
+SELECT  last_name,
+	COUNT(last_name)
+FROM employees
+GROUP BY last_name
+ORDER BY COUNT(last_name) DESC;
